@@ -6,6 +6,18 @@ class Node {
   }
 }
 
+/*
+Runtimes
+Average:
+insertion theta(log n)
+Searching theta(log n)
+
+Best:
+
+
+Worst:
+
+*/
 class BinarySearchTree {
   constructor(){
     this.root = null;
@@ -61,13 +73,13 @@ class BinarySearchTree {
       //if the current value is the 
       if(current.val === val){
         //we are done
-        return true;
+        return current;
       }
 
       if(val > current.val){
         //explore the right and not the left
         if(!current.right){
-          return null;
+          return undefined;
         } else {
           current = current.right;
         }
