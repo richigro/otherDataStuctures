@@ -103,4 +103,5 @@ myBst.insert(10.5);
 
 */
 console.log("================================");
+//uncomment to see breadth first search in action
 console.log(breadthFirstSearch(myBst.root));
