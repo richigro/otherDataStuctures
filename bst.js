@@ -49,6 +49,41 @@ class BinarySearchTree {
     }
   }
 
+  find(val){
+    
+    //if there are no nodes
+    if(!this.root){
+      return null;
+    }
+    let current = this.root;
+
+    while(true){
+      //if the current value is the 
+      if(current.val === val){
+        //we are done
+        return true;
+      }
+
+      if(val > current.val){
+        //explore the right and not the left
+        if(!current.right){
+          return null;
+        } else {
+          current = current.right;
+        }
+        
+      } else {
+        //explore the left
+        if(!current.left){
+          return null;
+        } else {
+          current = current.left;
+        }
+      }
+
+    }
+  }
+
 }
 
 var bst = new BinarySearchTree();
@@ -63,6 +98,15 @@ bst.insert(12);
 bst.insert(9);
 bst.insert(10.5);
 
+console.log(bst.find(10));
+console.log(bst.find(11));
+console.log(bst.find(8));
+console.log(bst.find(7));
+console.log(bst.find(12));
+console.log(bst.find(9));
+console.log(bst.find(10.5));
+console.log(bst.find(101));
 
 
-console.log(bst);
+
+// console.log(bst);
