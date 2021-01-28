@@ -62,20 +62,24 @@ class Queue {
 const breadthFirstSearch = function(root){
   let result = [];
   let queue = new Queue();
+  console.log("root: ", root.val);
   //add the value of the root node into queue
   queue.enqueue(root);
   // console.log();
   //this will continue until the queue is empty
    while(queue.size() > 0){
+     console.log("hi");
     let currentNode = queue.dequeue();
-    console.log(currentNode.val);
+    // console.log("current value: ",currentNode.val);
     //add the value of current to array
-    result.push(currentNode.val);
-    if(currentNode.left){
+    console.log("current node: ", currentNode.val.val);
+    result.push(currentNode.val.val);
+    if(currentNode.val.left){
       //enqueue node
-      queue.enqueue(currentNode.left);
-    } else if(currentNode.right){
-      queue.enqueue(currentNode.right);
+      queue.enqueue(currentNode.val.left);
+    } 
+    if(currentNode.val.right){
+      queue.enqueue(currentNode.val.right);
     }
    }
 
@@ -99,4 +103,4 @@ myBst.insert(10.5);
 
 */
 console.log("================================");
-console.log(breadthFirstSearch(myBst));
+console.log(breadthFirstSearch(myBst.root));
