@@ -100,25 +100,25 @@ class BinarySearchTree {
 
 var bst = new BinarySearchTree();
 
-bst.insert(10);
-bst.insert(11);
-bst.insert(8);
+// bst.insert(10);
+// bst.insert(11);
+// bst.insert(8);
 
-bst.insert(7);
+// bst.insert(7);
 
-bst.insert(12);
-bst.insert(9);
-bst.insert(10.5);
+// bst.insert(12);
+// bst.insert(9);
+// bst.insert(10.5);
 
-console.log(bst.find(10));
-console.log(bst.find(11));
-console.log(bst.find(8));
-console.log(bst.find(7));
-console.log(bst.find(12));
-console.log(bst.find(9));
-console.log(bst.find(10.5));
-console.log(bst.find(101));
+// console.log(bst.find(10));
+// console.log(bst.find(11));
+// console.log(bst.find(8));
+// console.log(bst.find(7));
+// console.log(bst.find(12));
+// console.log(bst.find(9));
+// console.log(bst.find(10.5));
+// console.log(bst.find(101));
 
 
-
+module.exports = { BinarySearchTree };
 // console.log(bst);
