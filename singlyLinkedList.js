@@ -56,6 +56,24 @@ SinglyLinkedList.prototype.pop = function(val) {
   return current;
 };
 
+//remove the node at the head
+SinglyLinkedList.prototype.shift = function() {
+  if(!this.head){
+    return undefined;
+  }
+  var oldHead = this.head;
+  // make the new head be the oldHead's next node
+  this.head = oldHead.next;
+
+  this.length--;
+  // if length its zero reset the head back to null
+  if(!this.length){
+    this.head = null;
+    this.tail = null;
+  }
+  return oldHead;
+};
+
 var mySLinkedList = new SinglyLinkedList();
 mySLinkedList.push(5);
 mySLinkedList.push(10);
