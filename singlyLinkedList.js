@@ -92,7 +92,7 @@ SinglyLinkedList.prototype.unshift = function(val) {
 };
 
 SinglyLinkedList.prototype.get = function(index) {
-  if(!this.length || index >= this.length || index < 0) return undefined;
+  if(!this.length || index >= this.length || index < 0) return null;
   var counter = 0;
   var currentNode = this.head;
   var targetNode;
@@ -105,7 +105,18 @@ SinglyLinkedList.prototype.get = function(index) {
     currentNode = currentNode.next;
     counter++;
   }
+  return targetNode;
+};
 
+// get the node at the given index and update its value
+SinglyLinkedList.prototype.set = function(index, val) {
+  //get node 
+  var node = this.get(index);
+  if(!node){
+    return false;
+  }
+  node.val = val;
+  return true;
 };
 
 var mySLinkedList = new SinglyLinkedList();
@@ -115,9 +126,9 @@ mySLinkedList.push(7);
 mySLinkedList.push(8);
 mySLinkedList.push(90);
 
-console.log(mySLinkedList.get(-1));
+console.log(mySLinkedList.set(-1, "hello"));
 // console.log(mySLinkedList.unshift("hello"));
-// console.log(mySLinkedList);
+console.log(mySLinkedList);
 // console.log(mySLinkedList.unshift("world"));
 // console.log(mySLinkedList);
 // console.log(mySLinkedList.unshift("yooo"));
