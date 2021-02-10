@@ -119,16 +119,46 @@ SinglyLinkedList.prototype.set = function(index, val) {
   return true;
 };
 
-var mySLinkedList = new SinglyLinkedList();
-mySLinkedList.push(5);
-mySLinkedList.push(10);
-mySLinkedList.push(7);
-mySLinkedList.push(8);
-mySLinkedList.push(90);
+SinglyLinkedList.prototype.insert = function(index, val) {
+  if(index > this.length || index < 0) return false;
+  if(index === this.length) {
+    this.push(val);
+  }else if(index === 0) {
+    this.unshift(val);
+  } else {
+    //create a new node
+    var newNode = new Node(val);
+    // get the node before the index
+    var prevNode = this.get(index - 1);
+    // get the node after the index
+    var aftNode = this.get(index);
+    //if either of the nodes are invalid then the index provided 
+    // its out of range
+    if(!prevNode || !aftNode){
+      return false;
+    }
+    //point the new node to the node that is currently at index
+    newNode.next = aftNode;
+    //point the previous next node to the new node
+    prevNode.next = newNode;
+    // increment the length of the list
+    this.length++;
+  }
+  //after successful insertion return true
+  return true
+};
 
-console.log(mySLinkedList.set(-1, "hello"));
+var mySLinkedList = new SinglyLinkedList();
+// mySLinkedList.push(5);
+// mySLinkedList.push(10);
+// mySLinkedList.push(7);
+// mySLinkedList.push(8);
+// mySLinkedList.push(90);
+
+console.log(mySLinkedList.insert(0, "hello"));
+console.log(mySLinkedList.insert(2, "boy"));
 // console.log(mySLinkedList.unshift("hello"));
-console.log(mySLinkedList);
+// console.log(mySLinkedList);
 // console.log(mySLinkedList.unshift("world"));
 // console.log(mySLinkedList);
 // console.log(mySLinkedList.unshift("yooo"));
