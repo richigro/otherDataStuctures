@@ -74,23 +74,47 @@ SinglyLinkedList.prototype.shift = function() {
   return oldHead;
 };
 
-var mySLinkedList = new SinglyLinkedList();
-mySLinkedList.push(5);
-mySLinkedList.push(10);
-mySLinkedList.push(7);
-mySLinkedList.push(8);
-mySLinkedList.push(90);
+SinglyLinkedList.prototype.unshift = function(val) {
+  //create a new node with passed in val
+  var newNode = new Node(val);
+  // if its the first thing we add
+  if(!this.head){
+    this.head = newNode;
+    this.tail = newNode;
+  } else {
+    // add this element to the head of the list
+    var oldHead = this.head;
+    this.head = newNode;
+    newNode.next = oldHead;
+  }
+  this.length++;
+  return this;
+};
 
+var mySLinkedList = new SinglyLinkedList();
+// mySLinkedList.push(5);
+// mySLinkedList.push(10);
+// mySLinkedList.push(7);
+// mySLinkedList.push(8);
+// mySLinkedList.push(90);
+
+console.log(mySLinkedList.unshift("hello"));
+console.log(mySLinkedList);
+console.log(mySLinkedList.unshift("world"));
+console.log(mySLinkedList);
+console.log(mySLinkedList.unshift("yooo"));
+console.log(mySLinkedList);
+// console.log();
 // mySLinkedList.pop();
-console.log(mySLinkedList.pop());
-console.log(mySLinkedList);
-console.log(mySLinkedList.pop());
-console.log(mySLinkedList);
-console.log(mySLinkedList.pop());
-console.log(mySLinkedList);
-console.log(mySLinkedList.pop());
-console.log(mySLinkedList);
-console.log(mySLinkedList.pop());
-console.log(mySLinkedList);
-console.log(mySLinkedList.pop());
-console.log(mySLinkedList);
+// console.log(mySLinkedList.pop());
+// console.log(mySLinkedList);
+// console.log(mySLinkedList.pop());
+// console.log(mySLinkedList);
+// console.log(mySLinkedList.pop());
+// console.log(mySLinkedList);
+// console.log(mySLinkedList.pop());
+// console.log(mySLinkedList);
+// console.log(mySLinkedList.pop());
+// console.log(mySLinkedList);
+// console.log(mySLinkedList.pop());
+// console.log(mySLinkedList);
