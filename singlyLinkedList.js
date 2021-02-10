@@ -17,40 +17,62 @@ SinglyLinkedList.prototype.push = function(val) {
   if(!this.head){
     this.tail = newNode;
     this.head = newNode;
+  }else {
+    //if its not empty add to tail
+    //point the current tail's next to the newly created node
+    this.tail.next = newNode;
+    // point the tail pointer to the newly created node
+    this.tail = newNode;
   }
-  //if its not empty add to tail
-  
-  this.tail.next = newNode;
-  this.tail = newNode;
-
+  // increment the length
   this.length++;
+  // return the whole linked list
+  return this;
 };
 
-SinglyLinkedList.prototype.remove = function(val) {
-  if(!this.size){
+//remove the last element in the linked list
+SinglyLinkedList.prototype.pop = function(val) {
+  if(!this.head){
     return undefined;
   }
   // start at the begining and check each node
-  // until you find 
-  function traverse(currentNode) {
-    //check to see if the current node's value is the node you need to remove
-    if(currentNode.val === val){
-      return currentNode;
-    } 
-    //base case, if current node's next is null 
-    // it means that were are at the last node 
-    if(!node.next){
-    
-    }
-    // got to the next node
-    traverse(currentNode.next);
-  };
-  traverse(this.head);
+  //keep track of the tail to be deleted
+  var current = this.head;
+  var newTail = current;
+  while(current.next) {
+    newTail = current;
+    current = current.next;
+  }
+  //make the penultimate node now be the last node in the list
+  this.tail = newTail;
+  // sever the link between the penultimate node and the current
+  this.tail.next = null;
+
+  this.length--;
+  if(!this.length){
+    this.head = null;
+    this.tail = null;
+  }
+  return current;
 };
 
 var mySLinkedList = new SinglyLinkedList();
 mySLinkedList.push(5);
 mySLinkedList.push(10);
 mySLinkedList.push(7);
+mySLinkedList.push(8);
 mySLinkedList.push(90);
+
+// mySLinkedList.pop();
+console.log(mySLinkedList.pop());
+console.log(mySLinkedList);
+console.log(mySLinkedList.pop());
+console.log(mySLinkedList);
+console.log(mySLinkedList.pop());
+console.log(mySLinkedList);
+console.log(mySLinkedList.pop());
+console.log(mySLinkedList);
+console.log(mySLinkedList.pop());
+console.log(mySLinkedList);
+console.log(mySLinkedList.pop());
 console.log(mySLinkedList);
