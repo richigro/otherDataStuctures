@@ -91,19 +91,37 @@ SinglyLinkedList.prototype.unshift = function(val) {
   return this;
 };
 
-var mySLinkedList = new SinglyLinkedList();
-// mySLinkedList.push(5);
-// mySLinkedList.push(10);
-// mySLinkedList.push(7);
-// mySLinkedList.push(8);
-// mySLinkedList.push(90);
+SinglyLinkedList.prototype.get = function(index) {
+  if(!this.length || index >= this.length || index < 0) return undefined;
+  var counter = 0;
+  var currentNode = this.head;
+  var targetNode;
 
-console.log(mySLinkedList.unshift("hello"));
-console.log(mySLinkedList);
-console.log(mySLinkedList.unshift("world"));
-console.log(mySLinkedList);
-console.log(mySLinkedList.unshift("yooo"));
-console.log(mySLinkedList);
+  while(currentNode){
+    if(counter === index){
+      targetNode = currentNode;
+      return targetNode;
+    }
+    currentNode = currentNode.next;
+    counter++;
+  }
+
+};
+
+var mySLinkedList = new SinglyLinkedList();
+mySLinkedList.push(5);
+mySLinkedList.push(10);
+mySLinkedList.push(7);
+mySLinkedList.push(8);
+mySLinkedList.push(90);
+
+console.log(mySLinkedList.get(-1));
+// console.log(mySLinkedList.unshift("hello"));
+// console.log(mySLinkedList);
+// console.log(mySLinkedList.unshift("world"));
+// console.log(mySLinkedList);
+// console.log(mySLinkedList.unshift("yooo"));
+// console.log(mySLinkedList);
 // console.log();
 // mySLinkedList.pop();
 // console.log(mySLinkedList.pop());
