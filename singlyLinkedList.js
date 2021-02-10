@@ -148,6 +148,31 @@ SinglyLinkedList.prototype.insert = function(index, val) {
   return true
 };
 
+SinglyLinkedList.prototype.remove = function(index) {
+  if(index < 0 || index > this.length || !this.length) return undefined;
+  if(index === 0){
+    var removedNode = this.shift();
+    return removedNode;
+  } else if(index === this.length - 1){
+    var oldN = this.pop();
+    return oldN;
+  }else {
+    console.log("else triggered");
+    // node to be deleted
+    var oldNode = this.get(index);
+    //get the prev node
+    var prevNode = this.get(index-1);
+    //get the node after
+    var aftNode = this.get(index+1);
+
+    // link the prevNode's next property to pint the the next node
+    prevNode.next = aftNode;
+
+    this.length--;
+    return oldNode;
+  }
+};
+
 var mySLinkedList = new SinglyLinkedList();
 // mySLinkedList.push(5);
 // mySLinkedList.push(10);
@@ -156,7 +181,13 @@ var mySLinkedList = new SinglyLinkedList();
 // mySLinkedList.push(90);
 
 console.log(mySLinkedList.insert(0, "hello"));
-console.log(mySLinkedList.insert(2, "boy"));
+console.log(mySLinkedList.insert(1, "There"));
+console.log(mySLinkedList.insert(2, "my"));
+console.log(mySLinkedList.insert(3, "friend"));
+console.log(mySLinkedList);
+
+mySLinkedList.remove(3);
+console.log(mySLinkedList);
 // console.log(mySLinkedList.unshift("hello"));
 // console.log(mySLinkedList);
 // console.log(mySLinkedList.unshift("world"));
